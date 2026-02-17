@@ -1,16 +1,95 @@
-# React + Vite
+Todo Application Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Description
 
-Currently, two official plugins are available:
+This application is a comprehensive task management system built as the Second Semester Examination project for the AltSchool of Frontend Engineering (Karatu 2025). The project demonstrates proficiency in React 19, professional routing, API integration, and accessible UI design. Users can manage their tasks through a paginated list, view detailed information for individual items, and perform full CRUD operations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features
 
-## React Compiler
+Paginated Todo List: Displays 10 items per page with clear navigation controls.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Todo Details: Nested routing to view comprehensive information about a specific task.
 
-## Expanding the ESLint configuration
+Search and Filtering: Real-time search by title and filtering by completion status (All, Complete, Incomplete).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CRUD Operations: Full ability to create, edit, and delete tasks with confirmation dialogs.
+
+Advanced Error Handling: Implementation of React Error Boundaries and a custom 404 page.
+
+State Management: Efficient data fetching and caching.
+
+Accessibility: Semantic HTML, ARIA attributes, and keyboard navigation support.
+
+Responsive Design: Mobile-first approach ensuring usability across all device sizes.
+
+Technology Choices and Reasoning
+
+React 19: Utilized for its latest functional component patterns, Hooks, and improved performance.
+
+React Router: Chosen for robust client-side routing, handling nested routes for Todo details, and managing the 404 redirect logic.
+
+Vanilla CSS: Used for styling to demonstrate a deep understanding of CSS architecture and responsive design without external library overhead.
+
+Tanstack Query (suggested): Implemented for server-state management, providing out-of-the-box caching and loading/error states.
+
+Lucide React: Integrated for a consistent and accessible icon system.
+
+Setup Instructions
+
+To run this project locally, follow these steps:
+
+Clone the repository:
+
+Bash
+
+git clone [[your-repository-link](https://github.com/Josh-codes165/AltSchool-Second-Semester-Project-Exam)]
+Navigate to the project directory:
+
+Bash
+
+cd todo-app-project
+Install dependencies:
+
+Bash
+
+npm install
+Start the development server:
+
+Bash
+
+npm run dev
+Open your browser and navigate to http://localhost:5173 (or the port specified in your terminal).
+
+Available Scripts
+
+npm run dev: Runs the app in the development mode.
+
+npm run build: Builds the app for production to the dist folder.
+
+npm run preview: Locally previews the production build.
+
+npm run lint: Runs ESLint to check for code quality issues.
+
+API Configuration
+
+This project integrates with the following backend:
+
+Base URL: https://api.oluwasetemi.dev
+
+Endpoints utilized: /todos, /todos/{id}, /auth/login, /auth/register.
+
+
+Deployment
+The project is hosted on [Vercel/Netlify/PipeOps].
+
+Live URL: [[Your Deployed URL Link](https://alt-school-second-semester-project-gray.vercel.app/)]
+
+Known Issues and Future Improvements
+
+Known Issue: Rapidly switching pagination pages can occasionally lead to a brief race condition in data fetching if the network is extremely slow.
+
+Improvement: Implement WebSocket integration using the /ws/tasks endpoint for real-time updates across multiple sessions.
+
+Improvement: Add more robust offline support using Service Workers for a full PWA experience.
+
+DONE BY JOSHUA OKORONKWO
