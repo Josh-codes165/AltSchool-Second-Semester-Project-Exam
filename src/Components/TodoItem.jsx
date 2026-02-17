@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import "../Styles/TodoItem.css";
 
-function TodoItem({ todo, onEdit, onDelete }) {
+function TodoItem({ todo, onEdit, onDelete, onToggle }) {
   return (
     <article className="todo-item">
       <div className="todo-content">
         <input
           type="checkbox"
           checked={todo.completed || false}
-          readOnly
+          onChange={() => onToggle(todo)}
           aria-label={`Mark ${todo.title} as ${todo.completed ? "incomplete" : "complete"}`}
         />
         <div className="todo-text">
@@ -45,5 +45,6 @@ function TodoItem({ todo, onEdit, onDelete }) {
     </article>
   );
 }
+
 
 export default TodoItem;

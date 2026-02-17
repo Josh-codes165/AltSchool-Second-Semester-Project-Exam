@@ -1,121 +1,152 @@
+/* Todo item card */
 .todo-item {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  /* Changed to center to keep buttons aligned even if text grows */
+  align-items: center; 
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+  /* Ensures a standard height for shorter todos */
+  min-height: 80px; 
 }
 
 .todo-item:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* Content section */
 .todo-content {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 12px;
+  /* This allows the text container to take all available space 
+     but respect the buttons' space */
   flex: 1;
+  min-width: 0; /* Critical for text truncation to work in flexbox */
 }
 
 .todo-content input[type="checkbox"] {
-  margin-top: 0.25rem;
   width: 20px;
   height: 20px;
+  flex-shrink: 0; /* Prevents checkbox from squishing */
+  accent-color: #3b82f6;
   cursor: pointer;
 }
 
 .todo-text {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Allows children to truncate */
+  width: 100%;
 }
 
 .todo-text h3 {
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #1e293b;
+  
+  /* Text Truncation Logic */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .todo-text h3.completed {
   text-decoration: line-through;
-  color: var(--text-secondary);
+  color: #94a3b8;
+  opacity: 0.7;
 }
 
 .todo-description {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 2px;
+  line-height: 1.4;
+  
+  /* Multi-line truncation (shows 1 line then ...) */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* Actions section */
 .todo-actions {
   display: flex;
-  gap: 0.5rem;
-  flex-shrink: 0;
+  gap: 8px;
+  flex-shrink: 0; /* Prevents buttons from getting smaller */
+  margin-left: 20px;
 }
 
-.btn-view,
-.btn-edit,
-.btn-delete-small {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 500;
+/* Buttons */
+.todo-actions a,
+.todo-actions button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  border: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   white-space: nowrap;
 }
 
+/* View button */
 .btn-view {
-  background: var(--primary-color);
-  color: white;
+  background-color: #f1f5f9;
+  color: #1e293b;
 }
 
 .btn-view:hover {
-  background: var(--primary-hover);
-  text-decoration: none;
+  background-color: #e2e8f0;
 }
 
+/* Edit button */
 .btn-edit {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  background: #3b82f6;
+  color: #ffffff;
 }
 
 .btn-edit:hover {
-  background: var(--border-color);
+  background: #2563eb;
 }
 
+/* Delete button */
 .btn-delete-small {
-  background: var(--error-color);
-  color: white;
+  background-color: #fee2e2;
+  color: #ef4444;
 }
 
 .btn-delete-small:hover {
-  background: #dc2626;
+  background-color: #fca5a5;
+  color: #ffffff;
 }
 
-@media (max-width: 640px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .todo-item {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
 
   .todo-actions {
+    margin-left: 0;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
-
-  .btn-view,
-  .btn-edit,
-  .btn-delete-small {
-    flex: 1;
-    text-align: center;
+  
+  .todo-actions button, .todo-actions a {
+    flex: 1; /* Buttons take equal width on mobile */
   }
 }
