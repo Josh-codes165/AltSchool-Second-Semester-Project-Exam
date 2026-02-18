@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import "../Styles/TodoItem.css";
 
 function TodoItem({ todo, onEdit, onDelete, onToggle }) {
+
+    if(!todo) return null
+
+    const isCompleted = todo.completed || todo.status === "DONE"
   return (
     <article className="todo-item">
       <div className="todo-content">

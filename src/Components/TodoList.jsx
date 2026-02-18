@@ -82,10 +82,15 @@ function TodoList() {
     }
 
     // Status filter
+    // Change lines 93-97 to this:
     if (statusFilter === "complete") {
-      todos = todos.filter((todo) => todo.completed === true);
+      todos = todos.filter(
+        (todo) => todo.completed === true || todo.status === "DONE",
+      );
     } else if (statusFilter === "incomplete") {
-      todos = todos.filter((todo) => todo.completed === false);
+      todos = todos.filter(
+        (todo) => todo.completed === false || todo.status === "TODO",
+      );
     }
 
     // Calculate pagination
@@ -104,6 +109,18 @@ function TodoList() {
   const handleStatusChange = (value) => {
     setStatusFilter(value);
     setCurrentPage(1);
+  };
+
+  const handleToggleTodo = (todo) => {
+    // We send the ID separately from the data object
+    updateMutation.mutate({
+      id: todo.id,
+      data: {
+        title: todo.title, // Use the existing title
+        description: todo.description,
+        completed: !todo.completed, // Flip the status
+      },
+    });
   };
 
   const handleCreateTodo = (formData) => {
@@ -198,6 +215,7 @@ function TodoList() {
                 todo={todo}
                 onEdit={handleEditTodo}
                 onDelete={handleDeleteClick}
+                onToggle={handleToggleTodo}
               />
             ))}
           </section>
