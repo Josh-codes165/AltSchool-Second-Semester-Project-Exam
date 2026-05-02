@@ -1,0 +1,23 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./Pages/HomePage.js";
+import TodoDetailPage from "./Pages/ToDoDetailPage.js";
+import ErrorTestPage from "./Pages/ErrorTestPage.js";
+import NotFoundPage from "./Pages/NotFoundPage.js";
+import ErrorBoundary from "./Components/ErrorBoundary.js";
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/todos/:id" element={<TodoDetailPage />} />
+          <Route path="/error-test" element={<ErrorTestPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    </ErrorBoundary>
+  );
+}
+
+export default App;
